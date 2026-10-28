@@ -1,0 +1,399 @@
+/* ==========================================================================
+   Minimalist Orange & Black Design System
+   Clean, flat, high-contrast aesthetic with zero glows
+   ========================================================================== */
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Matte Dark Colors */
+  --bg-color: #0c0c0d;
+  --card-bg: #141416;
+  --card-border: #232326;
+  --card-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  
+  --text-main: #ffffff;
+  --text-muted: #8e8e93;
+  --text-light: #52525b;
+  
+  /* Minimal Matte Orange */
+  --primary-orange: #ff6b00;
+  --primary-orange-hover: #e05e00;
+  --btn-text: #ffffff;
+  
+  /* Inputs */
+  --input-underline: #27272a;
+  --input-focus-underline: #ff6b00;
+  
+  /* Alerts */
+  --error-color: #ef4444;
+  --error-bg: #1f1414;
+  --error-border: #381a1a;
+  
+  --success-color: #22c55e;
+  --success-bg: #141f17;
+  --success-border: #1a3821;
+  
+  --border-radius-card: 16px;
+  --border-radius-btn: 8px;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* ==========================================================================
+   Minimal Card Container
+   ========================================================================== */
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.auth-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--card-shadow);
+  padding: 44px 36px;
+  border: 1px solid var(--card-border);
+}
+
+/* ==========================================================================
+   Typography & Headers
+   ========================================================================== */
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.auth-link {
+  color: var(--primary-orange);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 6px;
+  transition: color var(--transition-fast);
+}
+
+.auth-link:hover {
+  color: var(--primary-orange-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Alert Banners
+   ========================================================================== */
+
+.alert-box {
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-danger {
+  background-color: var(--error-bg);
+  color: var(--error-color);
+  border: 1px solid var(--error-border);
+}
+
+.alert-success {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-border);
+}
+
+/* ==========================================================================
+   Form & Clean Underline Inputs
+   ========================================================================== */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.required-star {
+  color: var(--primary-orange);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.underline-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid var(--input-underline);
+  background: transparent;
+  padding: 8px 32px 8px 0;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: #ffffff;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.underline-input:focus {
+  border-bottom-color: var(--input-focus-underline);
+}
+
+.underline-input::placeholder {
+  color: var(--text-light);
+  font-size: 0.92rem;
+}
+
+.toggle-visibility-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color var(--transition-fast);
+}
+
+.toggle-visibility-btn:hover {
+  color: #ffffff;
+}
+
+.has-error .underline-input {
+  border-bottom-color: var(--error-color);
+}
+
+.has-error .field-label {
+  color: var(--error-color);
+}
+
+.field-error {
+  font-size: 0.76rem;
+  color: var(--error-color);
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Primary Action Button - Crisp Matte Orange
+   ========================================================================== */
+
+.btn-primary {
+  width: 100%;
+  padding: 13px 20px;
+  margin-top: 8px;
+  background-color: var(--primary-orange);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--border-radius-btn);
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--primary-orange-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  opacity: 0.95;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Loading Spinner
+   ========================================================================== */
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ==========================================================================
+   Dashboard View
+   ========================================================================== */
+
+.dashboard-card {
+  text-align: center;
+  padding: 44px 36px;
+}
+
+.user-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary-orange);
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.dashboard-email {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 24px;
+  word-break: break-all;
+}
+
+.dashboard-info {
+  background: #19191c;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.dashboard-info strong {
+  color: #ffffff;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-btn);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: #52525b;
+  background-color: #19191c;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 32px 22px;
+  }
+
+  .auth-title {
+    font-size: 1.9rem;
+  }
+}
